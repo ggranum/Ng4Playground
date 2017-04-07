@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Cantarell:400i');
+@import url('../node_modules/font-awesome/css/font-awesome.min.css');
+@import '../node_modules/@angular/material/core/theming/palette';
+@import '../node_modules/@angular/material/core/theming/theming';
+
+html {
+  height: 100%;
+}
+
+.snl-button-icon {
+  margin-right: .4em;
+}
+
+ng2-adsense div {
+  text-align: center;
+
+  .adsbygoogle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/**
+* @hack ggranum: The md-select label is not aligned with the md-input labels
+*/
+.snl-select-input {
+  padding-top: 9px;
+}
+
+.snl-md-null-option-hack.mat-option {
+  height: 0;
+}
+
+.no-select {
+  user-select: none;
+}
+
+@mixin snl-global-app-theme($theme, $appMap) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $primary_500: mat-color(map-get($theme, primary), 500);
+  $accent_300: mat-color(map-get($theme, accent), 300);
+  $accent_900: mat-color(map-get($theme, accent), 900);
+  $accent_500: mat-color(map-get($theme, accent), 500);
+  $warn: mat-color(map-get($theme, warn));
+  $text: mat-color(map-get($theme, primary), 400);
+  $textColorDisabled: mat-color(map-get($theme, foreground), disabled-text);
+  $iconColorDisabled: mat-color(map-get($theme, foreground), disabled-button);
+  $subText: mat-color(map-get($theme, primary), 50);
+
+  /* @todo ggranum: Title and subtitle should be in here, too. */
+
+  a, a:visited, a:active, a:focus {
+    text-decoration: none;
+    outline: none;
+    text-underline: none;
+    cursor: pointer;
+    color: black;
+    user-select: none;
+    * {
+      user-select: none;
+      outline: none;
+
+    }
+  }
+
+  .snl-disabled {
+    color: $textColorDisabled;
+    .snl-input-spinner-field {
+      color: $textColorDisabled;
+      md-icon {
+        color: $iconColorDisabled;
+      }
+    }
+
+  }
+
+  .disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.36);
+  }
+
+  .snl-themed {
+    text-align: center;
+
+    .snl-fancy-font {
+      letter-spacing: .2em;
+      font-family: 'Kaushan Script', cursive;
+    }
+
+    legend {
+      text-align: left;
+      padding: 0 .5em 0 .5em;
+      margin-left: 1em;
+    }
+
+    .snl-capture-inputs-container {
+    }
+
+    .snl-name-container {
+      margin: 0 1em 0 1em;
+    }
+
+    .snl-input-template {
+      min-height: 4em;
+      margin-right: 1em;
+    }
+
+    .snl-input-template.snl-mode-preview {
+      opacity: 0.5;
+    }
+
+
+    .mat-input-placeholder, md-select .mat-select-placeholder {
+      text-align: left;
+    }
+
+    .snl-button-footer-container {
+      font-size: 24px;
+      .material-icons {
+        font-size: 24px;
+      }
+      height: 2.5em;
+
+      .snl-button-footer {
+        width: 100%;
+        padding: .33em 1em;
+        box-shadow: -.4em -.4em .75em 0px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &.snl-edit-page {
+      margin: .5em 1em 0 1em;
+
+      .snl-name-icon-container {
+        font-size: 125%;
+        snl-icon {
+          margin-top: .65em;
+          > i {
+            font-size: 36px;
+          }
+        }
+        .snl-main-input {
+          margin-left: 2em;
+          margin-right: 2em;
+        }
+
+      }
+      .snl-name-container {
+        min-height: 2em;
+        max-height: 3em;
+        font-size: large;
+        .snl-name {
+          margin-right: 1em;
+          font-size: larger;
+          .snl-input-edit-mode {
+            font-size: larger;
+          }
+        }
+      }
+    }
+
+    /**
+    Lists of items with action buttons on right side
+     */
+    .snl-edit-list {
+      margin: 1em 1em 0 1em;
+
+      .snl-fab-menu-edit-row {
+        //min-height: 3.5em;
+        .snl-edit-field {
+          min-width: 15em;
+        }
+      }
+      .snl-fab-menu-edit-row-body {
+        min-width: 100%;
+        max-width: 100%;
+      }
+      .snl-edit-row, .snl-fab-menu-edit-row {
+        .mat-checkbox-label, .mat-slide-toggle-content, .snl-number-spinner-label {
+          min-width: 10em;
+          text-align: left;
+        }
+      }
+      .snl-fab-menu-edit-row .snl-right-fab-container {
+        min-width: 3em;
+      }
+      .snl-edit-nested-container {
+        margin: .15em 0 .15em 1em;
+      }
+      .snl-edit-row {
+        min-height: 3.5em;
+        .snl-edit-field {
+          min-width: 15em;
+          margin-right: 3em;
+          .mat-slide-toggle-content {
+            font-size: inherit;
+            font-weight: inherit;
+            font-family: inherit;
+            margin-right: 0
+          }
+        }
+      }
+    }
+
+    /**
+     * The help tip dialogs
+     */
+    &.snl-tip-dialog {
+
+      text-align: left;
+      max-width: 40em;
+      min-width: 100%;
+      font-size: 14px;
+      .snl-tip-section {
+
+        margin-top: 1em;
+        .mat-mini-fab {
+          transform: scale(.4, .4);
+          margin: 0 -0.5em -0.75em -0.5em;
+          vertical-align: bottom;
+        }
+        md-icon.snl-icon-adjust {
+          font-size: 18px;
+          height: 1em;
+          width: 1em;
+          vertical-align: bottom;
+        }
+
+        .snl-tip-inline-image, .snl-tip-inline-font-icon {
+          vertical-align: text-bottom;
+          max-width: 1.5em;
+        }
+
+      }
+    }
+
+  }
+
+  .snl-centered-label {
+    text-align: center;
+  }
+
+  .snl-raw-input {
+    -webkit-appearance: inherit;
+    background-color: inherit;
+    user-select: text;
+    cursor: auto;
+    padding: 0;
+    border: none;
+
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inherit;
+    text-align: inherit;
+    margin: 0 0 0 0;
+    font: inherit;
+  }
+
+  .snl-edit-list-row-fab-menu.mat-menu-panel {
+    padding-left: 1em;
+    margin-right: 1em;
+    .snl-delete {
+      margin-right: 1em;
+      color: $warn;
+    }
+
+    .snl-edit {
+      //margin-right: 1em;
+    }
+  }
+
+  //
+  .snl-floating-material-button-container {
+    position: absolute;
+    font-size: 12px;
+    width: 20%;
+    bottom: 4em;
+    right: 3em;
+  }
+  .snl-floating-material-button {
+    position: static;
+    z-index: 1000;
+    font-size: 24px;
+  }
+
+  /**
+   * Transforms for icons
+   */
+  .snl-rotate-45 {
+    transform: rotate(45deg);
+  }
+
+  .snl-fading-line {
+    height: 1px;
+    background: radial-gradient(50% 100%, #000, transparent);
+  }
+}
+
+/* Restore the H2 styling for asciidoctor */
+tg-asciidoctor-panel {
+
+  h1 {
+    display: block;
+    font-size: 200%;
+    margin: .67em 0 .67em 0;
+    font-weight: bold;
+  }
+
+  h2 {
+    display: block;
+    font-size: 150%;
+    margin: .83em 0 .83em 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    display: block;
+    font-size: 1.17em;
+    margin: 1em 0 1em 0;
+    font-weight: bold;
+  }
+
+}

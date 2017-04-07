@@ -1,0 +1,12 @@
+@import './global-app';
+
+@mixin apply-theme-to-app($theme) {
+
+  $appMap: (
+    'appBarHeight': 2.5em,
+    'bottomNavHeight': 2em
+  );
+
+  @include snl-global-app-theme($theme, $appMap);
+
+}
